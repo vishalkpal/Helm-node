@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 8000
+  port: 3000
 
 ingress:
   enabled: false
@@ -71,7 +71,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 1
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
