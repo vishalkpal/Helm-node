@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: vishalkrpal/nodeapp:latest
+  repository: vishalkrpal/nodeapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
