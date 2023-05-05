@@ -1,4 +1,4 @@
-# Default values for hello-node.
+# Default values for DC.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -6,9 +6,12 @@ replicaCount: 1
 
 image:
   repository: vishalkrpal/nodeapp
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: latest
+
+#arguments: ['--log-driver', 'awslogs', '--log-opt awslogs-region', 'us-east-1', '--log-opt awslogs-group', 'myLogGroup', '--log-opt awslogs-create-group','true']
+
 
 imagePullSecrets: []
 nameOverride: ""
@@ -43,13 +46,11 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations: 
   hosts:
-    - host: chart-example.local
+    - host: sosuke.tk
       paths:
-        - path: /
+        - path: "/*"
           pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
@@ -71,9 +72,9 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-  targetMemoryUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
